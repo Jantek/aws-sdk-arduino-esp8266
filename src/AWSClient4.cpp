@@ -255,6 +255,7 @@ AWSClient4::createRequest(MinimalString &reqPayload)
 
     // create the headers
     createRequestHeaders(signature);
+    delete[] payloadHash;
     delete signature;
 
     // get the host/domain
