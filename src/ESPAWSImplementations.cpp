@@ -55,7 +55,9 @@ EspHttpClient::send(const char* request, const char* serverUrl, int port)
         Serial.println("Connection Unsuccessful");
         // connection was unsuccessful
         sclient.stop();
-        return "can't setup SSL connection";
+        char *response_char = new char[sizeof("can't setup SSL connection")+1]();
+        sprintf(response_char, "can't setup SSL connection");
+        return response_char;
     }
 
     // convert the string into a char and return
