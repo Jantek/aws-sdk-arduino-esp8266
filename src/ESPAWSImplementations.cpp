@@ -62,6 +62,7 @@ EspHttpClient::send(const char* request, const char* serverUrl, int port)
     int len = response.length();
     char* response_char = new char[len + 1]();
     response.toCharArray(response_char, len + 1);
+    delete[] request;
     return response_char;
 }
 
