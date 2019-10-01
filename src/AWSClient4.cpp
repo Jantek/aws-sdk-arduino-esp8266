@@ -159,6 +159,7 @@ AWSClient4::createStringToSign(char* canonical_request)
           awsDate, awsRegion, awsService);
 
   sprintf(string_to_sign, "%s%s", string_to_sign, hashed);
+  delete[] hashed;
 
   return;
 }
