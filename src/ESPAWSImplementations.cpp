@@ -20,11 +20,11 @@ EspHttpClient::send(const char* request, const char* serverUrl, int port)
 #else
     WiFiSSLClient sclient;
 #endif
-    Serial.println(serverUrl);
-    Serial.println(port);
-    Serial.println(request);
-    Serial.println("");
-    Serial.println("");
+//    Serial.println(serverUrl);
+//    Serial.println(port);
+//    Serial.println(request);
+//    Serial.println("");
+//    Serial.println("");
 
     String response = "";
     
@@ -157,9 +157,9 @@ char* updateCurTime(void) {
         ipos = req2.indexOf("Date:");
         if(ipos>0) {
           GmtDate = req2.substring(ipos,ipos+35);
-          Serial.println(GmtDate);
+//          Serial.println(GmtDate);
           utctime = GmtDate.substring(18,22) + getMonth(GmtDate.substring(14,17)) + GmtDate.substring(11,13) + GmtDate.substring(23,25) + GmtDate.substring(26,28) + GmtDate.substring(29,31);
-          Serial.println(utctime.substring(0,14));
+//          Serial.println(utctime.substring(0,14));
           utctime.substring(0,14).toCharArray(dateStamp, 20);
         }
     }
