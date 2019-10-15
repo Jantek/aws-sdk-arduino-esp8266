@@ -33,6 +33,7 @@ void
 AWSClient4::setAWSRegion(const char * awsRegion)
 {
     int len = strlen(awsRegion) + 1;
+    if(this->awsRegion != 0) delete[] this->awsRegion;
     this->awsRegion = new char[len]();
     strcpy(this->awsRegion, awsRegion);
 }
@@ -41,6 +42,7 @@ void
 AWSClient4::setAWSEndpoint(const char * awsEndpoint)
 {
     int len = strlen(awsEndpoint) + 1;
+    if(this->awsEndpoint != 0) delete[] this->awsEndpoint;
     this->awsEndpoint = new char[len]();
     strcpy(this->awsEndpoint, awsEndpoint);
 }
@@ -49,6 +51,7 @@ void
 AWSClient4::setAWSDomain(const char * awsDomain)
 {
     int len = strlen(awsDomain) + 1;
+    if(this->awsDomain != 0) delete[] this->awsDomain;
     this->awsDomain = new char[len]();
     strcpy(this->awsDomain, awsDomain);
 }
@@ -57,6 +60,7 @@ void
 AWSClient4::setAWSPath(const char * awsPath)
 {
     int len = strlen(awsPath) + 1;
+    if(this->awsPath != 0) delete[] this->awsPath;
     this->awsPath = new char[len]();
     strcpy(this->awsPath, awsPath);
 }
@@ -65,6 +69,7 @@ void
 AWSClient4::setAWSSecretKey(const char * awsSecKey)
 {
     int len = strlen(awsSecKey) + 1;
+    if(this->awsSecKey != 0) delete[] this->awsSecKey;
     this->awsSecKey = new char[len]();
     strcpy(this->awsSecKey, awsSecKey);
 }
@@ -73,6 +78,7 @@ void
 AWSClient4::setAWSKeyID(const char * awsKeyID)
 {
     int len = strlen(awsKeyID) + 1;
+    if(this->awsKeyID != 0) delete[] this->awsKeyID;
     this->awsKeyID = new char[len]();
     strcpy(this->awsKeyID, awsKeyID);
 }
