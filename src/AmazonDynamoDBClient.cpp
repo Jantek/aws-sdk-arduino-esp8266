@@ -92,6 +92,7 @@ static const char* B_KEY = "B";
 static const char* S_KEY = "S";
 static const char* NS_KEY = "NS";
 static const char* N_KEY = "N";
+static const char* NULL_KEY = "NULL";
 static const char* UNPROCESSEDITEMS_KEY = "UnprocessedItems";
 static const char* SCANFILTER_KEY = "ScanFilter";
 static const char* TOTALSEGMENTS_KEY = "TotalSegments";
@@ -565,6 +566,7 @@ void AttributeValue::reset() {
     SBeenSet = false;
     NSBeenSet = false;
     NBeenSet = false;
+    NULLBeenSet = false;
 }
 
 bool AttributeValue::jsonDeserialize(MinimalString json) {
@@ -587,6 +589,7 @@ bool AttributeValue::jsonDeserialize(MinimalString json) {
     char* serializedS = jsmnGetVal(S_KEY, jsonCStr, tokens, tCount);
     char* serializedNS = jsmnGetVal(NS_KEY, jsonCStr, tokens, tCount);
     char* serializedN = jsmnGetVal(N_KEY, jsonCStr, tokens, tCount);
+    char* serializedNULL = jsmnGetVal(NULL_KEY, jsonCStr, tokens, tCount);
 
     bool toReturn = true;
 
@@ -620,6 +623,10 @@ bool AttributeValue::jsonDeserialize(MinimalString json) {
         NBeenSet = true;
         N = MinimalString(serializedN);
     }
+    if (serializedNULL != NULL) {
+        NULLBeenSet = true;
+        AWS_NULL = MinimalString(serializedNULL);
+    }
     if (serializedSS != NULL) {
         delete[] serializedSS;
     }
@@ -637,6 +644,9 @@ bool AttributeValue::jsonDeserialize(MinimalString json) {
     }
     if (serializedN != NULL) {
         delete[] serializedN;
+    }
+    if (serializedNULL != NULL) {
+        delete[] serializedNULL;
     }
     if (tokens != NULL) {
         delete[] tokens;
@@ -662,6 +672,9 @@ MinimalString AttributeValue::jsonSerialize() const {
         itemCount++;
     }
     if (NBeenSet) {
+        itemCount++;
+    }
+    if (NULLBeenSet) {
         itemCount++;
     }
 
@@ -697,6 +710,11 @@ MinimalString AttributeValue::jsonSerialize() const {
         MinimalString pairValue = N.jsonSerialize();
         pairValue.setAlreadySerialized(true);
         pairs[pairsAssigned++] = MinimalKeyValuePair<MinimalString,MinimalString>(N_KEY, pairValue);
+    }
+    if (NULLBeenSet) {
+        MinimalString pairValue = AWS_NULL.jsonSerialize();
+        pairValue.setAlreadySerialized(true);
+        pairs[pairsAssigned++] = MinimalKeyValuePair<MinimalString,MinimalString>(NULL_KEY, pairValue);
     }
 
     MinimalMap<MinimalString> map(pairs, itemCount);
@@ -734,6 +752,11 @@ void AttributeValue::setN(MinimalString N) {
     this->N = N;
 }
 
+void AttributeValue::setNULL(MinimalString AWS_NULL) {
+    NULLBeenSet = true;
+    this->AWS_NULL = AWS_NULL;
+}
+
 MinimalList<MinimalString > AttributeValue::getSS() const {
     return SS;
 }
@@ -756,6 +779,10 @@ MinimalList<MinimalString > AttributeValue::getNS() const {
 
 MinimalString AttributeValue::getN() const {
     return N;
+}
+
+MinimalString AttributeValue::getNULL() const {
+    return AWS_NULL;
 }
 
 ProvisionedThroughput::ProvisionedThroughput() {
@@ -6512,7 +6539,6 @@ PutItemOutput AmazonDynamoDBClient::putItem(PutItemInput putItemInput, ActionErr
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return putItemOutput;

@@ -159,12 +159,14 @@ class AttributeValue{
     MinimalString S;
     MinimalList<MinimalString > NS;
     MinimalString N;
+    MinimalString AWS_NULL;
     bool SSBeenSet;
     bool BSBeenSet;
     bool BBeenSet;
     bool SBeenSet;
     bool NSBeenSet;
     bool NBeenSet;
+    bool NULLBeenSet;
     void reset();
 public:
     AttributeValue();
@@ -176,12 +178,14 @@ public:
     void setS(MinimalString S);
     void setNS(MinimalList<MinimalString > NS);
     void setN(MinimalString N);
+    void setNULL(MinimalString AWS_NULL);
     MinimalList<MinimalString > getSS() const;
     MinimalList<MinimalString > getBS() const;
     MinimalString getB() const;
     MinimalString getS() const;
     MinimalList<MinimalString > getNS() const;
     MinimalString getN() const;
+    MinimalString getNULL() const;
 };
 
 /* <p>Represents the provisioned throughput settings for a specified table or index. The settings can be modified using the <i>UpdateTable</i> operation.</p><p>For current minimum and maximum provisioned throughput values, see <a href="http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html">Limits</a> in the Amazon DynamoDB Developer Guide.</p> */
