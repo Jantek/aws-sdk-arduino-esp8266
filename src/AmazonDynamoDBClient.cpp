@@ -6131,7 +6131,7 @@ BatchGetItemOutput AmazonDynamoDBClient::batchGetItem(BatchGetItemInput batchGet
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return batchGetItemOutput;
@@ -6182,7 +6182,7 @@ BatchWriteItemOutput AmazonDynamoDBClient::batchWriteItem(BatchWriteItemInput ba
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return batchWriteItemOutput;
@@ -6233,7 +6233,7 @@ CreateTableOutput AmazonDynamoDBClient::createTable(CreateTableInput createTable
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return createTableOutput;
@@ -6284,7 +6284,7 @@ DeleteItemOutput AmazonDynamoDBClient::deleteItem(DeleteItemInput deleteItemInpu
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return deleteItemOutput;
@@ -6335,7 +6335,7 @@ DeleteTableOutput AmazonDynamoDBClient::deleteTable(DeleteTableInput deleteTable
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return deleteTableOutput;
@@ -6386,7 +6386,7 @@ DescribeTableOutput AmazonDynamoDBClient::describeTable(DescribeTableInput descr
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return describeTableOutput;
@@ -6437,7 +6437,7 @@ GetItemOutput AmazonDynamoDBClient::getItem(GetItemInput getItemInput, ActionErr
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return getItemOutput;
@@ -6488,7 +6488,7 @@ ListTablesOutput AmazonDynamoDBClient::listTables(ListTablesInput listTablesInpu
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return listTablesOutput;
@@ -6589,7 +6589,7 @@ QueryOutput AmazonDynamoDBClient::query(QueryInput queryInput, ActionError& acti
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return queryOutput;
@@ -6640,7 +6640,7 @@ ScanOutput AmazonDynamoDBClient::scan(ScanInput scanInput, ActionError& actionEr
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return scanOutput;
@@ -6691,7 +6691,7 @@ UpdateItemOutput AmazonDynamoDBClient::updateItem(UpdateItemInput updateItemInpu
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return updateItemOutput;
@@ -6742,7 +6742,7 @@ UpdateTableOutput AmazonDynamoDBClient::updateTable(UpdateTableInput updateTable
         request = createRequest(payload);
     }
     const char* response = sendData(request);
-    delete[] request;
+//    delete[] request;
     if (response == NULL) {
         actionError = CONNECTION_ACTIONERROR;
         return updateTableOutput;
