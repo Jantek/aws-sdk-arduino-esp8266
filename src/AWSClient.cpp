@@ -64,21 +64,25 @@ AWSClient::AWSClient() {
 
 void AWSClient::setAWSRegion(const char * awsRegion) {
     int len = strlen(awsRegion) + 1;
+    if(this->awsRegion != 0) delete[] this->awsRegion;
     this->awsRegion = new char[len]();
     strcpy(this->awsRegion, awsRegion);
 }
 void AWSClient::setAWSEndpoint(const char * awsEndpoint) {
     int len = strlen(awsEndpoint) + 1;
+    if(this->awsEndpoint != 0) delete[] this->awsEndpoint;
     this->awsEndpoint = new char[len]();
     strcpy(this->awsEndpoint, awsEndpoint);
 }
 void AWSClient::setAWSSecretKey(const char * awsSecKey) {
     int len = strlen(awsSecKey) + 1;
+    if(this->awsSecKey != 0) delete[] this->awsSecKey;
     this->awsSecKey = new char[len]();
     strcpy(this->awsSecKey, awsSecKey);
 }
 void AWSClient::setAWSKeyID(const char * awsKeyID) {
     int len = strlen(awsKeyID) + 1;
+    if(this->awsKeyID != 0) delete[] this->awsKeyID;
     this->awsKeyID = new char[len]();
     strcpy(this->awsKeyID, awsKeyID);
 }
